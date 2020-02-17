@@ -1,15 +1,15 @@
 CREATE INDEX "birthIndex" ON "people" (
-	"birth"
+    "birth"
 );
 
 CREATE INDEX "nameIndex" ON "people" (
-	"name"
+    "name"
 );
 
 CREATE INDEX "movieIndex" ON "stars" (
-	"movie_id"
+    "movie_id"
 );
 
 CREATE INDEX "personIndex" ON "stars" (
-	"person_id"
+    "person_id"
 );
