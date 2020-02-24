@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Sheet</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/tables/ -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>House</th>
+                <th>Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+        // Configure DataTables
+        $('table').DataTable({
+            info: false,
+            ordering: true,
+            paging: false,
+            searching: false
+        });
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="name" placeholder="Name" type="text">
+        </div>
+
+        <div class="form-group">
+            <select class="form-control" name="house">
+                <option disabled selected value="">House</option>
+                <option value="Gryffindor">Gryffindor</option>
+                <option value="Hufflepuff">Hufflepuff</option>
+                <option value="Ravenclaw">Ravenclaw</option>
+                <option value="Slytherin">Slytherin</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            {% for position in ["Beater", "Chaser", "Keeper", "Seeker"] %}
+                <div class="form-check">
+                    <input class="form-check-input" id="{{ position }}" name="position" type="radio" value="{{ position }}">
+                    <label class="form-check-label" for="{{ position }}">
+                        {{ position }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+    <script>
+
+        // Validate submission
+        document.querySelector('form').onsubmit = function() {
+
+            // Validate name
+            let name = document.querySelector('input[name=name]');
+            if (!name.value) {
+                alert('You must specify your name.');
+                name.focus();
+                return false;
+            }
+
+            // Validate house
+            let house = document.querySelector('select[name=house]');
+            if (!house.value) {
+                alert('You must specify your house.');
+                house.focus();
+                return false;
+            }
+
+            // Validate position
+            let position = document.querySelector('input[name=position]:checked');
+            if (!position || !position.value) {
+                alert('You must specify your position.');
+                return false;
+            }
+            return true;
+        };
+
+    </script>
+
+{% endblock %}
