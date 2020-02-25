@@ -2,10 +2,10 @@
 
 {% block main %}
 
-    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <!-- http://getbootstrap.com/docs/4.4/content/typography/ -->
     <h1 class="mb-3">Form</h1>
 
-    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <!-- http://getbootstrap.com/docs/4.4/components/forms/ -->
     <form action="/form" method="post">
 
         <div class="form-group">
@@ -33,41 +33,9 @@
             {% endfor %}
         </div>
 
-        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <!-- http://getbootstrap.com/docs/4.4/components/buttons/ -->
         <button class="btn btn-primary" type="submit">Submit</button>
 
     </form>
-
-    <script>
-
-        // Validate submission
-        document.querySelector('form').onsubmit = function() {
-
-            // Validate name
-            let name = document.querySelector('input[name=name]');
-            if (!name.value) {
-                alert('You must specify your name.');
-                name.focus();
-                return false;
-            }
-
-            // Validate house
-            let house = document.querySelector('select[name=house]');
-            if (!house.value) {
-                alert('You must specify your house.');
-                house.focus();
-                return false;
-            }
-
-            // Validate position
-            let position = document.querySelector('input[name=position]:checked');
-            if (!position || !position.value) {
-                alert('You must specify your position.');
-                return false;
-            }
-            return true;
-        };
-
-    </script>
 
 {% endblock %}

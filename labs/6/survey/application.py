@@ -37,9 +37,9 @@ def post_form():
     # Write submission to CSV
     with open("survey.csv", "a") as file:
         writer = csv.writer(file)
-        writer.writerow((request.form.get("name"),
+        writer.writerow([request.form.get("name"),
                          request.form.get("house"),
-                         request.form.get("position")))
+                         request.form.get("position")])
 
     # Redirect to /sheet
     return redirect("/sheet")
@@ -47,7 +47,7 @@ def post_form():
 
 @app.route("/sheet", methods=["GET"])
 def get_sheet():
-    with open("survey.csv", "r") as file:
+    with open("survey.csv") as file:
         reader = csv.reader(file)
         rows = list(reader)
     return render_template("sheet.html", rows=rows)
